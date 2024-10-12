@@ -2,6 +2,7 @@ class Solution {
 public:
     bool canPlaceFlowers(vector<int>& flowerbed, int n) {
 		int planted = 0;
+        // Use the case could be [0,0,0] n=2
         // Add zeros to the beginning and end of the flowerbed to simplify boundary conditions
         // This helps handle edge cases uniformly without extra checks for the first and last elements
 		flowerbed.insert(flowerbed.begin(), 0);
