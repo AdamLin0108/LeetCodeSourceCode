@@ -65,3 +65,39 @@ Space Complexity Analysis:
 - Additional space is used to store the prefix sums (sumL and sumR), each requiring O(n) space.
 - Thus, the overall space complexity is O(n).
 */
+
+
+class Solution {
+public:
+    // Function to find the pivot index such that the sum of elements on the left is equal to the sum on the right
+    int pivotIndex(vector<int>& nums) {
+        int totalSum = 0, leftSum = 0;
+        int len = nums.size();
+        
+        // Calculate total sum of the array
+        for (int num : nums) {
+            totalSum += num;
+        }
+        
+        // Iterate through the array and calculate left and right sums dynamically
+        for (int i = 0; i < len; ++i) {
+            if (leftSum == totalSum - leftSum - nums[i]) {
+                return i;
+            }
+            leftSum += nums[i];
+        }
+        
+        return -1; // Return -1 if no such index exists
+    }
+};
+
+/*
+Time Complexity Analysis:
+- The pivotIndex() function involves:
+  - Calculating the total sum in O(n) time.
+  - Iterating over the array to find the pivot, in O(n) time.
+- Overall time complexity is O(n), as the operations are linear in terms of input size.
+
+Space Complexity Analysis:
+- No additional space is used, resulting in O(1) space complexity.
+*/
