@@ -53,3 +53,26 @@ public:
         }
     }
 };
+
+class Solution {
+public:
+    int longestOnes(vector<int>& nums, int k) {
+        int L = 0, R = 0, maxWindow = 0, numZeros = 0;
+        
+        while(R < nums.size()){
+            if(nums[R] == 0){
+                numZeros++;
+            }
+
+            while(numZeros > k){
+                if(nums[L] == 0){
+                    numZeros--;
+                }
+                L++;
+            }
+            maxWindow = max(maxWindow, R-L+1);
+            R++;
+        }
+        return maxWindow;
+    }
+};
